@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Example Ajax Framework</title>
+</head>
+<body>
+    <form id="form1" method="post">
+        <table width="280px" align="center">
+            <tr>
+                <td width="80"><span class="style8">Username:</span></td>
+                <td width="140px"><input type="text" name="username" id="username"></td>
+            </tr>
+            <tr>
+                <td><span class="style8">Password:</span></td>
+                <td width="140px"><input type="password" name="password" id="password"></td>
+            </tr>
+            <td colspan="2"><div align="center"><input type="button" value="Login" onclick="Result(msg)"></div></td>
+        </table>
+    </form>
+    <div align="center" id="msg"></div>
+
+    <script type="text/javascript" src="prototype.js"></script>
+    <script language="javascript">
+        function Result(Div)
+        {
+            var params = Form.serialize("form1")
+            var url="checkuser.php"
+            var Addnew= new Ajax.Updater (Div,url,{method:"post",parameters: params});
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Menu Food</title>
+</head>
+
+<body>
+    <h1>
+        <font color="blue">เมนูอาหาร</font>
+    </h1>
+    <form name="form1">
+        <table border="1">
+            <tr>
+                <td>
+                    <center>คลิกเลือก</center>
+                </td>
+                <td>รายการอาหาร</td>
+                <td>ราคา</td>
+            </tr>
+            <tr>
+                <td>
+                    <center>
+                        <input type="checkbox" name="meal1">
+                <td>แพนเค็ก</td>
+                <td>120 บาท</td>
+                </center>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <center>
+                        <input type="checkbox" name="meal2">
+                <td>พิซซ่า</td>
+                <td>500 บาท</td>
+                </center>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <center>
+                        <input type="checkbox" name="meal3">
+                <td>หมาล่า</td>
+                <td>220 บาท</td>
+                </center>
+                </td>
+            </tr>
+        </table>
+        <p><input type="button" name="button" id="button" value="คำนวณค่าอาหาร" onclick="menu();"></p>
+        <h2>
+            <font color="red">รวมราคาอาหาร <span id="show_price"></span></font>
+        </h2>
+    </form>
+
+    <script language="javascript">
+        function menu() {
+            var price1 = 120;
+            var price2 = 520;
+            var price3 = 220;
+            if ((document.form1.meal1.checked)
+                && (document.form1.meal2.checked == false)
+                && (document.form1.meal3.checked == false)) { total_price = price1; }
+            else if ((document.form1.meal2.checked)
+                && (document.form1.meal1.checked == false)
+                && (document.form1.meal3.checked == false)) { total_price = price2; }
+
+            else if ((document.form1.meal3.checked)
+                && (document.form1.meal1.checked == false)
+                && (document.form1.meal2.checked == false)) { total_price = price3; }
+
+            else if ((document.form1.meal1.checked)
+                && (document.form1.meal2.checked == false)
+                && (document.form1.meal3.checked == false)) {
+                total_price = (parseInt(price1)) + (parseInt(price2)) + (parseInt(price3));
+            }
+            else if ((document.form1.meal1.checked)
+                && (document.form1.meal2.checked == false)) {
+                total_price = (parseInt(price1)) + (parseInt(price2));
+            }
+            else if ((document.form1.meal1.checked)
+                && (document.form1.meal3.checked == false)) {
+                total_price = (parseInt(price1)) + (parseInt(price3));
+            }
+            else if ((document.form1.meal2.checked)
+                && (document.form1.meal3.checked == false)) {
+                total_price = (parseInt(price2)) + (parseInt(price3));
+            }
+            else {
+                total_price = 0;
+            }
+            document.getElementById("show_price").innerHTML = total_price;
+        }
+    </script>
+</body>
+
+</html>
